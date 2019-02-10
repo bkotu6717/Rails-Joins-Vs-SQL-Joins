@@ -1,0 +1,39 @@
+Inner Join
+-----------
+Inner Join is nothing but Mathematical set Intersection operation.
+This joins brings the records from all the tables's columns from all the table used to join by default.
+The inner join performed on multiple tables is AND operation.
+
+Eg:
+
+class Post < ActiveRecord::Base
+  has_many :comments
+  has_many :likes
+  has_many :shares
+end
+
+class Comment < ActiveRecord::Base
+  belongs_to :post
+end
+class Like < ActiveRecord::Base
+  belongs_to :post
+end
+class Share < ActiveRecord::Base
+  belongs_to :post
+end
+
+Rails Inner Join for above
+---------------------------
+Post.joins(:comments, :likes, :shares)
+
+
+SQL Inner join for above
+-------------------------
+SELECT * FROM posts
+INNER JOIN comments ON comments.post_id = posts.id
+INNER JOIN likes ON likes.post_id = posts.id
+INNER JOIN shares ON shares.post_id = posts.id;
+
+Important notes:
+Posts with comments, likes and shares only will be retried
+Posts with absence of atleast one of comments, likes or shares won't be retrieved
