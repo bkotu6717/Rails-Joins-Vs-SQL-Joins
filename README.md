@@ -27,7 +27,7 @@ This repo gives understanding about writing SQL joins equivalent to Rails Active
 
 ### Types Of Joins
 
-1. <a href="google.com">Inner Join</a>
+1. <a href="https://github.com/bkotu6717/Rails-Joins-Vs-SQL-Joins/blob/master/Inner%20Join">Inner Join</a>
 2. Left Outer Join or Left Join
 3. Right Outer Join or Right Join
 4. Full Outer Join
