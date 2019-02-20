@@ -64,7 +64,7 @@
       Posts with absence of atleast one of comments, likes or shares won't be retrieved
 
 
-## 1. Get employees who are getting paid high in each department
+## Get employees who are getting paid high in each department
 
       select e.emp_no, e.first_name||' '||e.last_name as emp_name, dp.dept_name, s.salary as max_salary from employees e
       inner join salaries s on e.emp_no = s.emp_no
@@ -75,5 +75,42 @@
       inner join departments dp on de.dept_no = dp.dept_no
       inner join salaries s on e.emp_no = s.emp_no
       group by dp.dept_name) temp_table on s.salary = temp_table.max_salary and dp.dept_name = temp_table.dept_name;
+
+      
+## All types of joins
+      -- Select all rows from table A
+      select * from basket_a;
+       id |  fruit   
+      ----+----------
+        1 | Apple
+        2 | Orange
+        3 | Banana
+        4 | Cucumber
+      (4 rows)
+      -- Select all rows from table B
+      select * from basket_b;
+       id |   fruit    
+      ----+------------
+        1 | Orange
+        2 | Apple
+        3 | Watermelon
+        4 | Pear
+      (4 rows)
+      -- Inner Join
+
+### -- Inner Join
+      -- Select rows common to both tables (A & B)
+      select * from basket_a ba inner join basket_b bb on bb.fruit = ba.fruit;
+
+      id | fruit  | id | fruit  
+      ----+--------+----+--------
+        1 | Apple  |  2 | Apple
+        2 | Orange |  1 | Orange
+      (2 rows)
+### -- Left join or Left outer join
+      -- First select rows common to both A & B
+      -- 2nd select rows only belongs to A
+      select * from basket_a ba left join basket_b bb on bb.fruit = ba.fruit;
+      ![alt join result](file:///Users/Ahkshay/Desktop/Screenshot%202019-02-20%20at%207.41.27%20PM.png)
 
       
