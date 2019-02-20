@@ -158,7 +158,6 @@
       -- Uniq to A
       -- Uniq to B
       select * from basket_a ba full join basket_b bb on bb.fruit = ba.fruit;
-
        id     |  fruit   | id       |   fruit    
       --------+----------+----------+---------------
         1     | Apple    |  2       | Apple
@@ -179,6 +178,6 @@
         [null]  | [null]   |  3       | Watermelon
         [null]  | [null]   |  4       | Pear
       (4 rows)
-      
+
       
 
