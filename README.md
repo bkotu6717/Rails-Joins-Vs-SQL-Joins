@@ -110,7 +110,79 @@
 ### -- Left join or Left outer join
       -- First select rows common to both A & B
       -- 2nd select rows only belongs to A
-      select * from basket_a ba left join basket_b bb on bb.fruit = ba.fruit;
-      ![alt join result](file:///Users/Ahkshay/Desktop/Screenshot%202019-02-20%20at%207.41.27%20PM.png)
-
+      -- Non Matching rows will be shown with values null on table B data
       
+      select * from basket_a ba left join basket_b bb on bb.fruit = ba.fruit;
+      
+      id |  fruit   |   id     | fruit  
+      ----+----------+----+-------------
+        1 | Apple    |    2     | Apple
+        2 | Orange   |    1     | Orange
+        3 | Banana   |  [null]  | [null]
+        4 | Cucumber |  [null]  | [null]
+      (4 rows)
+### -- Left join or Left outer join
+    -- Select rows unique to A i.e exclude common rows between A and B
+    
+       select * from basket_a ba left join basket_b bb on bb.fruit = ba.fruit where bb.fruit IS NULL;
+       
+       id |  fruit   | id       | fruit 
+      ----+----------+----------+-------
+        3 | Banana   |  [null]  |  [null]
+        4 | Cucumber |  [null]  |  [null]
+      
+### -- Right join or Right outer join
+      
+      -- Right Join
+      -- First select rows common to both A & B
+      -- 2nd select rows only belongs to B
+      select * from basket_a ba right join basket_b bb on bb.fruit = ba.fruit;
+
+       id | fruit  | id |   fruit    
+      -------+--------+----+------------
+        2    | Orange |  1 | Orange
+        1    | Apple  |  2 | Apple
+      [null] | [null] |  3 | Watermelon
+      [null] | [null] |  4 | Pear
+      (4 rows)
+### - Right join or Right Outer join
+      -- Right Join
+      -- Select rows uniq to B
+      
+      select * from basket_a ba right join basket_b bb on bb.fruit = ba.fruit where ba.fruit is NULL;
+
+        id       | fruit       | id |   fruit    
+       ----------+-------------+----+------------
+       [null]    | [null]      |  3 | Watermelon
+       [null]    | [null]      |  4 | Pear
+       (2 rows)
+### - Full outer join
+      -- Full join
+      -- Common to both A & B
+      -- Uniq to A
+      -- Uniq to B
+      select * from basket_a ba full join basket_b bb on bb.fruit = ba.fruit;
+
+       id     |  fruit   | id       |   fruit    
+      --------+----------+----------+---------------
+        1     | Apple    |  2       | Apple
+        2     | Orange   |  1       | Orange
+        3     | Banana   |  [null]  | 
+        4     | Cucumber |  [null]  | 
+       [null] | [null]   |  3       | Watermelon
+       [null] | [null]   |  4       | Pear
+      (6 rows)
+
+## - Full join
+      -- Uniq to A & B Using Full Join
+      select * from basket_a ba full join basket_b bb on bb.fruit = ba.fruit where ba.fruit IS NULL or bb.fruit is NULL;
+       id       |  fruit   | id       |   fruit    
+      ----------+----------+----------+------------
+        3       | Banana   | [null]   |  [null]
+        4       | Cucumber | [null]   |  [null]
+        [null]  | [null]   |  3       | Watermelon
+        [null]  | [null]   |  4       | Pear
+      (4 rows)
+      
+      
+
