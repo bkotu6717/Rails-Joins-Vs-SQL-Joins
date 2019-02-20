@@ -1,6 +1,9 @@
 # Rails-Joins-Vs-SQL-Joins
 <p>This repo gives understanding about writing SQL joins equivalent to Rails ActiveRecord Join Queries</p>
 
+  ![SQL Joins](http://www.postgresqltutorial.com/wp-content/uploads/2018/12/PostgreSQL-Joins.png)
+
+
 ## Joins uses
 <ul>
 <li>Joins helps in RDBMS to combine and retrieve data from muliple tables which are connected through relationships.<l/i>
