@@ -1,13 +1,6 @@
 # Rails-Joins-Vs-SQL-Joins
 <p>This repo gives understanding about writing SQL joins equivalent to Rails ActiveRecord Join Queries</p>
 
-## Joins introduction
-      A = {1,2,3,4,5}
-      B = {6,7,8,9,10}
-      A U B = {1,2,3,4,5,6,7,8,9,10}
-      A Intersection B = {} # There are no common elements between A and B
-      A-B, B-A are the remaining operations
-
 ## Joins uses
 <ul>
 <li>Joins helps in RDBMS to combine and retrieve data from muliple tables which are connected through relationships.<l/i>
