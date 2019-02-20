@@ -62,3 +62,18 @@
       ### **Important notes**
       Posts with comments, likes and shares only will be retried
       Posts with absence of atleast one of comments, likes or shares won't be retrieved
+
+
+## 1. Get employees who are getting paid high in each department
+
+      select e.emp_no, e.first_name||' '||e.last_name as emp_name, dp.dept_name, s.salary as max_salary from employees e
+      inner join salaries s on e.emp_no = s.emp_no
+      inner join dept_emp de on e.emp_no = de.emp_no
+      inner join departments dp on de.dept_no = dp.dept_no
+      inner join (select dp.dept_name dept_name, max(s.salary) as max_salary from employees e
+      inner join dept_emp de on e.emp_no = de.emp_no
+      inner join departments dp on de.dept_no = dp.dept_no
+      inner join salaries s on e.emp_no = s.emp_no
+      group by dp.dept_name) temp_table on s.salary = temp_table.max_salary and dp.dept_name = temp_table.dept_name;
+
+      
